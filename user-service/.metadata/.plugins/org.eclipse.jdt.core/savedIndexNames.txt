@@ -1,0 +1,13 @@
+INDEX VERSION 1.134+C:\Users\asus\Desktop\TATWA\Projects\LMS\.metadata\.plugins\org.eclipse.jdt.core
+231299833.index
+1865797976.index
+3990102921.index
+2296715573.index
+3521604581.index
+292023895.index
+3578566296.index
+3588768180.index
+2781465680.index
+827353562.index
+2027906442.index
+4205194771.index
