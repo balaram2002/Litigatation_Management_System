@@ -22,24 +22,30 @@ import com.lms.user.dto.UserUpdateDto;
 import com.lms.user.feign.dto.CaseResponseDto;
 import com.lms.user.service.AdminService;
 
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/admin")
 @PreAuthorize("hasRole('ADMIN')")
+@RequiredArgsConstructor
 public class AdminController {
 
 	// Dependencies
 	private final AdminService adminService;
+	
+	
 	@Value("${server.port}")
     private String port;
 
 	// Constructor DI
-	public AdminController(AdminService adminService) {
-		this.adminService = adminService;
-	}
+//	public AdminController(AdminService adminService) {
+//		this.adminService = adminService;
+//	}
 
 	// create advocate by admin
 	@PostMapping("/advocate")
-	public ResponseEntity<ApiResponse<?>> createAdvocate(@RequestBody UserRegisterDto dto) {
+	public ResponseEntity<ApiResponse<?>> createAdvocate(@RequestBody @Valid UserRegisterDto dto) {
 		return ResponseEntity.ok(ApiResponse.success("Advocate created", adminService.createAdvocate(dto)));
 	}
 
@@ -51,7 +57,7 @@ public class AdminController {
 	
 
     // Get user by ID
-    @GetMapping("users/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity<ApiResponse<UserResponseDto>> getUserById(@PathVariable long userId) {
         UserResponseDto user = adminService.getUserById(userId);
         return ResponseEntity.ok(ApiResponse.success("User retrieved successfully", user));

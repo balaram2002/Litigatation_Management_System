@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lms-api-gateway" />
+        <module name="lms-service-registry" />
+        <module name="lms-admin-server" />
+      </profile>
+      <profile name="Annotation profile for lms-user-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="lms-document-service" />
+        <module name="lms-user-service" />
+        <module name="lms-case-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="lms-admin-server" options="-parameters" />
+      <module name="lms-api-gateway" options="-parameters" />
+      <module name="lms-case-service" options="-parameters" />
+      <module name="lms-document-service" options="-parameters" />
+      <module name="lms-service-registry" options="-parameters" />
+      <module name="lms-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>

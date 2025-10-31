@@ -63,9 +63,9 @@ public class CaseController {
 	 * @return case details wrapped in ApiResponse
 	 */
 	@PreAuthorize("hasAnyRole('ADMIN','ADVOCATE')")
-	@PatchMapping("/{caseId}/{caseStatus}")
+	@PatchMapping("/{caseId}")
 	public ResponseEntity<ApiResponse<CaseResponseDto>> changeCaseStatus(@PathVariable Long caseId,
-			@PathVariable String caseStatus) {
+			@RequestBody String caseStatus) {
 		CaseResponseDto dto = caseService.changeCaseStatus(caseId, caseStatus);
 		return ResponseEntity.ok(ApiResponse.success("Case status updated", dto));
 	}
@@ -111,8 +111,7 @@ public class CaseController {
 		caseService.deleteCase(caseId, userId);
 		return ResponseEntity.ok(ApiResponse.success("Case deleted successfully", null));
 	}
-
-	// Get cases by userId (client or advocate)
+	
 	@PreAuthorize("hasAnyRole('ADMIN','ADVOCATE','CLIENT')")
 	@GetMapping("/user/{userId}")
 	public ResponseEntity<List<CaseResponseDto>> getCasesByUserId(@PathVariable Long userId) {
